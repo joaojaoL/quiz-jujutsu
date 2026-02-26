@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJK Quiz Ultimate</title>
+    <title>JJK Quiz Ultimate - Sons e Aleatório</title>
     <style>
-        /* TUDO DE DESIGN AQUI */
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
@@ -15,7 +14,7 @@
             height: 100vh;
             overflow: hidden;
             transition: 0.3s;
-            background: url('foto.jpg') no-repeat center center fixed;
+            background: url('xd.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -106,31 +105,24 @@
 
     <div class="overlay"></div>
 
-    <audio id="bg-music" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" loop><source src="musica.mp3" type="audio/mpeg"></audio>
+    <audio id="sound-certo"><source src="acerto.mp3" type="audio/mpeg"></audio>
+    <audio id="sound-errado"><source src="erro.mp3" type="audio/mpeg"></audio>
 
     <div class="menu-container">
         <select id="select-nivel" onchange="mudarNivel()">
-            <option value="1">Nível 1</option>
-            <option value="2">Nível 2</option>
-            <option value="3">Nível 3</option>
-            <option value="4">Nível 4</option>
-            <option value="5">Nível 5</option>
-            <option value="6">Nível 6</option>
-            <option value="7">Nível 7</option>
-            <option value="8">Nível 8</option>
-            <option value="9">Nível 9</option>
-            <option value="10">Nível 10</option>
+            <option value="1">Nível 1</option><option value="2">Nível 2</option>
+            <option value="3">Nível 3</option><option value="4">Nível 4</option>
+            <option value="5">Nível 5</option><option value="6">Nível 6</option>
+            <option value="7">Nível 7</option><option value="8">Nível 8</option>
+            <option value="9">Nível 9</option><option value="10">Nível 10</option>
         </select>
     </div>
 
     <div class="quiz-card" id="quiz-content">
         <h1 id="question-text">Carregando...</h1>
-        <div class="options-container">
-            <button class="btn-option" id="opt0" onclick="check(0)"></button>
-            <button class="btn-option" id="opt1" onclick="check(1)"></button>
-        </div>
+        <div class="options-container" id="options-box">
+            </div>
         <div class="watermark">@joao.v</div>
     </div>
 
@@ -141,60 +133,49 @@
     </div>
 
     <script>
-        /* TUDO DE LÓGICA AQUI */
-        const audio = document.getElementById('bg-music');
+        const audioBg = document.getElementById('bg-music');
+        const sfxCerto = document.getElementById('sound-certo');
+        const sfxErrado = document.getElementById('sound-errado');
         const musicIcon = document.getElementById('music-icon');
 
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                musicIcon.innerText = "🔊";
-            } else {
-                audio.pause();
-                musicIcon.innerText = "🔇";
-            }
+            if (audioBg.paused) { audioBg.play(); musicIcon.innerText = "🔊"; }
+            else { audioBg.pause(); musicIcon.innerText = "🔇"; }
         }
 
-        // Toca no primeiro clique pra burlar o bloqueio do navegador
         document.body.addEventListener('click', () => {
-            if(audio.paused) { audio.play(); musicIcon.innerText = "🔊"; }
+            if(audioBg.paused) { audioBg.play(); musicIcon.innerText = "🔊"; }
         }, { once: true });
 
         const db = {
             1: [
-                { q: "Quem é o receptáculo de Sukuna?", options: ["Itadori", "Megumi"], correct: 0 },
-                { q: "Qual a técnica principal do Gojo?", options: ["Dez Sombras", "Infinito"], correct: 1 },
-                { q: "Nobara usa qual ferramenta?", options: ["Martelo", "Arco"], correct: 0 },
-                { q: "Quem tem o rosto costurado?", options: ["Jogo", "Mahito"], correct: 1 },
-                { q: "Megumi invoca criaturas chamadas...", options: ["Shikigamis", "Shinigamis"], correct: 0 },
-                { q: "O Brilho Negro (Black Flash) é de qual cor?", options: ["Vermelho", "Preto/Roxo"], correct: 1 },
-                { q: "Quem é o melhor amigo do Itadori?", options: ["Todo", "Choso"], correct: 0 },
-                { q: "Antes de feiticeiro, Nanami era...", options: ["Cozinheiro", "Assalariado"], correct: 1 },
-                { q: "Inumaki usa ingredientes de...", options: ["Sushi", "Lamen"], correct: 0 },
-                { q: "Satoru Gojo é de qual Grau?", options: ["Grau 1", "Especial"], correct: 1 }
+                { q: "Quem é o receptáculo de Sukuna?", options: ["Itadori", "Megumi"], correct: "Itadori" },
+                { q: "Qual a técnica principal do Gojo?", options: ["Infinito", "Dez Sombras"], correct: "Infinito" },
+                { q: "Nobara usa qual ferramenta?", options: ["Martelo", "Arco"], correct: "Martelo" },
+                { q: "Quem tem o rosto costurado?", options: ["Mahito", "Jogo"], correct: "Mahito" },
+                { q: "Megumi invoca criaturas chamadas...", options: ["Shikigamis", "Shinigamis"], correct: "Shikigamis" },
+                { q: "O Brilho Negro (Black Flash) é de qual cor?", options: ["Preto/Roxo", "Vermelho"], correct: "Preto/Roxo" },
+                { q: "Quem é o melhor amigo do Itadori?", options: ["Todo", "Choso"], correct: "Todo" },
+                { q: "Antes de feiticeiro, Nanami trabalhava como...", options: ["Assalariado", "Cozinheiro"], correct: "Assalariado" },
+                { q: "Inumaki fala ingredientes de...", options: ["Sushi", "Lamen"], correct: "Sushi" },
+                { q: "Satoru Gojo é de qual Grau?", options: ["Especial", "Grau 1"], correct: "Especial" }
             ],
             2: [
-                { q: "Quem matou Toji?", options: ["Geto", "Gojo"], correct: 1 },
-                { q: "Técnica da Nobara?", options: ["Ressonância", "Corte"], correct: 0 },
-                { q: "O Panda é o quê?", options: ["Cadáver Amaldiçoado", "Urso"], correct: 0 },
-                { q: "Pai biológico do Choso?", options: ["Kenjaku", "Sukuna"], correct: 0 },
-                { q: "Maldição de fogo?", options: ["Hanami", "Jogo"], correct: 1 },
-                { q: "Território do Megumi?", options: ["Jardim das Sombras", "Vazio"], correct: 0 },
-                { q: "Mestre do Gojo?", options: ["Masamichi Yaga", "Gakuganji"], correct: 0 },
-                { q: "Arma da Maki?", options: ["Nuvem Brincalhona", "Lança"], correct: 0 },
-                { q: "Escola de Jujutsu fica em...", options: ["Kyoto", "Tokyo"], correct: 1 },
-                { q: "Itadori engoliu o quê?", options: ["Dedo", "Olho"], correct: 0 }
+                { q: "Quem matou Toji?", options: ["Gojo", "Geto"], correct: "Gojo" },
+                { q: "Técnica da Nobara?", options: ["Ressonância", "Corte"], correct: "Ressonância" },
+                { q: "O Panda é o quê?", options: ["Cadáver Amaldiçoado", "Urso"], correct: "Cadáver Amaldiçoado" },
+                { q: "Pai biológico do Choso?", options: ["Kenjaku", "Sukuna"], correct: "Kenjaku" },
+                { q: "Maldição de fogo?", options: ["Jogo", "Hanami"], correct: "Jogo" },
+                { q: "Território do Megumi?", options: ["Jardim das Sombras", "Vazio"], correct: "Jardim das Sombras" },
+                { q: "Mestre do Gojo?", options: ["Masamichi Yaga", "Gakuganji"], correct: "Masamichi Yaga" },
+                { q: "Arma da Maki?", options: ["Nuvem Brincalhona", "Lança"], correct: "Nuvem Brincalhona" },
+                { q: "Escola de Jujutsu fica em...", options: ["Tokyo", "Kyoto"], correct: "Tokyo" },
+                { q: "Itadori engoliu o quê?", options: ["Dedo", "Olho"], correct: "Dedo" }
             ]
         };
 
-        // Gerar níveis 3-10 com respostas alternadas
-        for(let i=3; i<=10; i++) {
-            db[i] = db[1].map((p, idx) => ({
-                q: p.q + " [Nível "+i+"]",
-                options: idx % 2 === 0 ? [p.options[1], p.options[0]] : [p.options[0], p.options[1]],
-                correct: idx % 2 === 0 ? (p.correct === 0 ? 1 : 0) : p.correct
-            }));
-        }
+        // Gerar outros níveis
+        for(let i=3; i<=10; i++) { db[i] = db[1].map(p => ({...p, q: p.q + " [Lv "+i+"]"})); }
 
         let perguntasAtuais = [];
         let indexAtual = 0;
@@ -203,7 +184,7 @@
 
         function mudarNivel() {
             const nivel = document.getElementById('select-nivel').value;
-            perguntasAtuais = db[nivel];
+            perguntasAtuais = [...db[nivel]];
             indexAtual = 0;
             acertos = 0;
             load();
@@ -211,36 +192,52 @@
 
         function load() {
             bloqueado = false;
+            const optionsBox = document.getElementById('options-box');
+            optionsBox.innerHTML = "";
+
             if (indexAtual < perguntasAtuais.length) {
-                document.getElementById('question-text').innerText = perguntasAtuais[indexAtual].q;
-                for(let i=0; i<2; i++) {
-                    const btn = document.getElementById('opt' + i);
-                    btn.innerText = perguntasAtuais[indexAtual].options[i];
+                const p = perguntasAtuais[indexAtual];
+                document.getElementById('question-text').innerText = p.q;
+
+                // EMBARALHAR OPÇÕES
+                const shuffledOptions = [...p.options].sort(() => Math.random() - 0.5);
+
+                shuffledOptions.forEach(opt => {
+                    const btn = document.createElement('button');
                     btn.className = 'btn-option';
-                }
+                    btn.innerText = opt;
+                    btn.onclick = () => check(opt, btn);
+                    optionsBox.appendChild(btn);
+                });
             } else {
                 exibirRank();
             }
         }
 
-        function check(index) {
+        function check(escolha, btnBotao) {
             if(bloqueado) return;
             bloqueado = true;
-            const isCorrect = index === perguntasAtuais[indexAtual].correct;
-            const btn = document.getElementById('opt' + index);
-            
-            if (isCorrect) {
+            const correta = perguntasAtuais[indexAtual].correct;
+
+            if (escolha === correta) {
                 acertos++;
-                btn.classList.add('btn-correct');
+                btnBotao.classList.add('btn-correct');
+                sfxCerto.currentTime = 0;
+                sfxCerto.play();
             } else {
-                btn.classList.add('btn-wrong');
-                document.getElementById('opt' + perguntasAtuais[indexAtual].correct).classList.add('btn-correct');
+                btnBotao.classList.add('btn-wrong');
+                sfxErrado.currentTime = 0;
+                sfxErrado.play();
+                // Destacar a correta
+                Array.from(document.querySelectorAll('.btn-option')).forEach(b => {
+                    if(b.innerText === correta) b.classList.add('btn-correct');
+                });
             }
             
             setTimeout(() => {
                 indexAtual++;
                 load();
-            }, 600);
+            }, 800);
         }
 
         function exibirRank() {
