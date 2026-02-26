@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJK Quiz - 100 Perguntas</title>
+    <title>JJK Quiz Ultimate</title>
     <style>
+        /* TUDO DE DESIGN AQUI */
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
@@ -14,8 +15,7 @@
             height: 100vh;
             overflow: hidden;
             transition: 0.3s;
-            /* Usando a imagem que você subiu */
-            background: url('xd.jpg') no-repeat center center fixed;
+            background: url('foto.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -77,23 +77,51 @@
             transition: all 0.2s;
         }
 
-        .btn-correct { background-color: #2ecc71 !important; color: white !important; transform: scale(1.03); }
-        .btn-wrong { background-color: #e74c3c !important; color: white !important; transform: scale(0.97); }
+        .btn-correct { background-color: #2ecc71 !important; color: white !important; transform: scale(1.05); }
+        .btn-wrong { background-color: #e74c3c !important; color: white !important; transform: scale(0.95); }
 
         .watermark { margin-top: 20px; font-size: 11px; color: #999; }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-music {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="overlay"></div>
 
+    <audio id="bg-music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="menu-container">
         <select id="select-nivel" onchange="mudarNivel()">
-            <option value="1">Nível 1</option><option value="2">Nível 2</option>
-            <option value="3">Nível 3</option><option value="4">Nível 4</option>
-            <option value="5">Nível 5</option><option value="6">Nível 6</option>
-            <option value="7">Nível 7</option><option value="8">Nível 8</option>
-            <option value="9">Nível 9</option><option value="10">Nível 10</option>
+            <option value="1">Nível 1</option>
+            <option value="2">Nível 2</option>
+            <option value="3">Nível 3</option>
+            <option value="4">Nível 4</option>
+            <option value="5">Nível 5</option>
+            <option value="6">Nível 6</option>
+            <option value="7">Nível 7</option>
+            <option value="8">Nível 8</option>
+            <option value="9">Nível 9</option>
+            <option value="10">Nível 10</option>
         </select>
     </div>
 
@@ -106,49 +134,67 @@
         <div class="watermark">@joao.v</div>
     </div>
 
+    <div class="music-control">
+        <button class="btn-music" onclick="toggleMusic()">
+            <span id="music-icon">🔇</span>
+        </button>
+    </div>
+
     <script>
+        /* TUDO DE LÓGICA AQUI */
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.innerText = "🔊";
+            } else {
+                audio.pause();
+                musicIcon.innerText = "🔇";
+            }
+        }
+
+        // Toca no primeiro clique pra burlar o bloqueio do navegador
+        document.body.addEventListener('click', () => {
+            if(audio.paused) { audio.play(); musicIcon.innerText = "🔊"; }
+        }, { once: true });
+
         const db = {
             1: [
                 { q: "Quem é o receptáculo de Sukuna?", options: ["Itadori", "Megumi"], correct: 0 },
-                { q: "Qual a técnica do Gojo?", options: ["Infinito", "Dez Sombras"], correct: 0 },
-                { q: "Arma da Nobara?", options: ["Martelo", "Katana"], correct: 0 },
-                { q: "Vilão com costuras?", options: ["Mahito", "Jogo"], correct: 0 },
-                { q: "Megumi invoca...", options: ["Shikigamis", "Shinigamis"], correct: 0 },
-                { q: "Cor do Brilho Negro?", options: ["Preto/Roxo", "Vermelho"], correct: 0 },
-                { q: "Melhor amigo de Itadori?", options: ["Todo", "Fushiguro"], correct: 0 },
-                { q: "Nanami era...", options: ["Assalariado", "Cozinheiro"], correct: 0 },
-                { q: "Inumaki fala nomes de...", options: ["Sushi", "Doces"], correct: 0 },
-                { q: "Grau do Gojo?", options: ["Especial", "Grau 1"], correct: 0 }
+                { q: "Qual a técnica principal do Gojo?", options: ["Dez Sombras", "Infinito"], correct: 1 },
+                { q: "Nobara usa qual ferramenta?", options: ["Martelo", "Arco"], correct: 0 },
+                { q: "Quem tem o rosto costurado?", options: ["Jogo", "Mahito"], correct: 1 },
+                { q: "Megumi invoca criaturas chamadas...", options: ["Shikigamis", "Shinigamis"], correct: 0 },
+                { q: "O Brilho Negro (Black Flash) é de qual cor?", options: ["Vermelho", "Preto/Roxo"], correct: 1 },
+                { q: "Quem é o melhor amigo do Itadori?", options: ["Todo", "Choso"], correct: 0 },
+                { q: "Antes de feiticeiro, Nanami era...", options: ["Cozinheiro", "Assalariado"], correct: 1 },
+                { q: "Inumaki usa ingredientes de...", options: ["Sushi", "Lamen"], correct: 0 },
+                { q: "Satoru Gojo é de qual Grau?", options: ["Grau 1", "Especial"], correct: 1 }
             ],
             2: [
-                { q: "Quem matou Toji?", options: ["Gojo", "Geto"], correct: 0 },
+                { q: "Quem matou Toji?", options: ["Geto", "Gojo"], correct: 1 },
                 { q: "Técnica da Nobara?", options: ["Ressonância", "Corte"], correct: 0 },
-                { q: "Panda é um...", options: ["Cadáver Amaldiçoado", "Animal"], correct: 0 },
-                { q: "Pai do Choso?", options: ["Kenjaku", "Sukuna"], correct: 0 },
-                { q: "Maldição de Fogo?", options: ["Jogo", "Hanami"], correct: 0 },
+                { q: "O Panda é o quê?", options: ["Cadáver Amaldiçoado", "Urso"], correct: 0 },
+                { q: "Pai biológico do Choso?", options: ["Kenjaku", "Sukuna"], correct: 0 },
+                { q: "Maldição de fogo?", options: ["Hanami", "Jogo"], correct: 1 },
                 { q: "Território do Megumi?", options: ["Jardim das Sombras", "Vazio"], correct: 0 },
-                { q: "Mestre do Gojo?", options: ["Yaga", "Gakuganji"], correct: 0 },
+                { q: "Mestre do Gojo?", options: ["Masamichi Yaga", "Gakuganji"], correct: 0 },
                 { q: "Arma da Maki?", options: ["Nuvem Brincalhona", "Lança"], correct: 0 },
-                { q: "Escola fica em...", options: ["Tokyo", "Kyoto"], correct: 0 },
-                { q: "O que Itadori comeu?", options: ["Dedo", "Olho"], correct: 0 }
-            ],
-            3: [
-                { q: "Quem usa o 'Vazio Roxo'?", options: ["Gojo", "Sukuna"], correct: 0 },
-                { q: "Irmão do Choso?", options: ["Eso", "Mahito"], correct: 0 },
-                { q: "Quantos dedos tem Sukuna?", options: ["20", "10"], correct: 0 },
-                { q: "Quem é a Rainha das Maldições?", options: ["Rika", "Uraume"], correct: 0 },
-                { q: "Técnica do Inumaki?", options: ["Fala Amaldiçoada", "Voo"], correct: 0 },
-                { q: "Quem é o 'Irmão' do Todo?", options: ["Itadori", "Megumi"], correct: 0 },
-                { q: "Diretor de Kyoto?", options: ["Gakuganji", "Yaga"], correct: 0 },
-                { q: "Maki é de qual clã?", options: ["Zenin", "Kamo"], correct: 0 },
-                { q: "Poder do Hakari?", options: ["Azar", "Sorte/Jackpot"], correct: 1 },
-                { q: "Quem criou o Jogo?", options: ["Medo de Vulcões", "Medo de Humanos"], correct: 0 }
+                { q: "Escola de Jujutsu fica em...", options: ["Kyoto", "Tokyo"], correct: 1 },
+                { q: "Itadori engoliu o quê?", options: ["Dedo", "Olho"], correct: 0 }
             ]
-            // Adicionei até o 3 para exemplo, os outros 7 seguem o padrão abaixo automaticamente
         };
 
-        // Preenchendo o restante dos níveis para completar 100 perguntas
-        for(let i=4; i<=10; i++) { db[i] = db[1].map((p, index) => ({...p, q: p.q + " (Nível "+i+")"})); }
+        // Gerar níveis 3-10 com respostas alternadas
+        for(let i=3; i<=10; i++) {
+            db[i] = db[1].map((p, idx) => ({
+                q: p.q + " [Nível "+i+"]",
+                options: idx % 2 === 0 ? [p.options[1], p.options[0]] : [p.options[0], p.options[1]],
+                correct: idx % 2 === 0 ? (p.correct === 0 ? 1 : 0) : p.correct
+            }));
+        }
 
         let perguntasAtuais = [];
         let indexAtual = 0;
