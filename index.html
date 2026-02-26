@@ -1,12 +1,9 @@
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jujutsu Kaisen Quiz</title>
+    <title>JJK Quiz - Níveis</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -20,20 +17,31 @@
             transition: background-color 0.2s ease;
         }
 
+        /* Menu de Níveis no Canto Superior Direito */
+        .menu-niveis {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #eee;
+            background: white;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+
         .quiz-card {
             text-align: center;
             width: 90%;
             max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        h1 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
+        h1 { color: #333; font-size: 24px; margin-bottom: 30px; min-height: 60px; }
 
         .options-container {
             display: flex;
@@ -55,57 +63,93 @@
             transition: 0.2s;
         }
 
-        .btn-option:hover {
-            border-color: #ccc;
-            background-color: #f0f0f0;
-        }
+        .btn-option:hover { border-color: #ccc; background-color: #f0f0f0; }
 
-        /* Marca d'água pequena abaixo das opções */
-        .watermark {
-            margin-top: 15px; /* Espaço logo abaixo do último botão */
-            font-size: 11px;  /* Tamanho pequeno */
-            color: #bbb;      /* Cinza claro */
-            font-weight: normal;
-            letter-spacing: 0.5px;
-        }
+        .watermark { margin-top: 20px; font-size: 11px; color: #bbb; }
 
-        /* Feedback Visual */
+        /* Cores de Feedback */
         .flash-correct { background-color: #2ecc71 !important; }
         .flash-wrong { background-color: #e74c3c !important; }
     </style>
 </head>
 <body>
 
-    <div class="quiz-card">
-        <h1 id="question-text">Quem é o usuário da técnica "Infinito"?</h1>
+    <div class="menu-niveis">
+        <select id="select-nivel" onchange="mudarNivel()">
+            <option value="1">Nível 1 (10 Perguntas)</option>
+            <option value="2">Nível 2 (20 Perguntas)</option>
+            </select>
+    </div>
+
+    <div class="quiz-card" id="quiz-content">
+        <h1 id="question-text">Carregando...</h1>
         
         <div class="options-container">
-            <button class="btn-option" onclick="handleAnswer(true)">Satoru Gojo</button>
-            <button class="btn-option" onclick="handleAnswer(false)">Jogo</button>
+            <button class="btn-option" id="opt1" onclick="check(0)"></button>
+            <button class="btn-option" id="opt2" onclick="check(1)"></button>
         </div>
 
         <div class="watermark">@joao.v</div>
     </div>
 
     <script>
-        function handleAnswer(isCorrect) {
-            const body = document.body;
+        // Banco de Dados de Perguntas (Exemplo Nível 1)
+        const bancoPerguntas = {
+            1: [
+                { q: "Quem é o receptáculo de Sukuna?", options: ["Yuji Itadori", "Megumi"], correct: 0 },
+                { q: "Gojo possui qual técnica?", options: ["Infinito", "Dez Sombras"], correct: 0 },
+                { q: "Qual a cor do Brilho Negro?", options: ["Vermelho", "Preto/Roxo"], correct: 1 },
+                { q: "Nobara usa qual arma?", options: ["Martelo e Pregos", "Espada"], correct: 0 },
+                { q: "Quem é o diretor da escola de Tokyo?", options: ["Gojo", "Yaga"], correct: 1 },
+                { q: "Nanami era o quê antes de ser feiticeiro?", options: ["Cozinheiro", "Assalariado"], correct: 1 },
+                { q: "Qual o nome do Panda?", options: ["Panda", "Gorila"], correct: 0 },
+                { q: "Maki consegue ver maldições sem óculos?", options: ["Sim", "Não"], correct: 1 },
+                { q: "Toge Inumaki fala através de quê?", options: ["Ingredientes de Sushi", "Língua de Sinais"], correct: 0 },
+                { q: "Quem é o irmão de consideração de Itadori?", options: ["Todo", "Fushiguro"], correct: 0 }
+            ],
+            2: [
+                // Adicione 20 perguntas aqui para o Nível 2
+                { q: "Nível 2 - Pergunta 1", options: ["Opção A", "Opção B"], correct: 0 }
+            ]
+        };
 
-            if (isCorrect) {
+        let perguntasAtuais = [];
+        let indexAtual = 0;
+
+        function mudarNivel() {
+            const nivel = document.getElementById('select-nivel').value;
+            perguntasAtuais = bancoPerguntas[nivel];
+            indexAtual = 0;
+            load();
+        }
+
+        function load() {
+            if (indexAtual < perguntasAtuais.length) {
+                document.getElementById('question-text').innerText = perguntasAtuais[indexAtual].q;
+                document.getElementById('opt1').innerText = perguntasAtuais[indexAtual].options[0];
+                document.getElementById('opt2').innerText = perguntasAtuais[indexAtual].options[1];
+            } else {
+                document.getElementById('quiz-content').innerHTML = "<h1>Nível Concluído!</h1><button class='btn-option' onclick='location.reload()'>Recomeçar</button><div class='watermark'>@joao.v</div>";
+            }
+        }
+
+        function check(index) {
+            const body = document.body;
+            if (index === perguntasAtuais[indexAtual].correct) {
                 body.classList.add('flash-correct');
                 setTimeout(() => {
                     body.classList.remove('flash-correct');
-                    alert("Exato! Você dominou os Seis Olhos.");
-                }, 150);
+                    indexAtual++;
+                    load();
+                }, 200); // Pisca e já muda
             } else {
                 body.classList.add('flash-wrong');
-                setTimeout(() => {
-                    body.classList.remove('flash-wrong');
-                    alert("Errou! Satoru Gojo te mandou pro espaço.");
-                }, 150);
+                setTimeout(() => body.classList.remove('flash-wrong'), 200);
             }
         }
-    </script>
 
+        // Iniciar no Nível 1
+        mudarNivel();
+    </script>
 </body>
 </html>
