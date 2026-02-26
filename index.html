@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.2s ease;
+        }
+
+        .quiz-card {
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .btn-option {
+            width: 100%;
+            padding: 18px;
+            font-size: 17px;
+            font-weight: bold;
+            color: #444;
+            background-color: #f8f9fa;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-option:hover {
+            border-color: #ccc;
+            background-color: #f0f0f0;
+        }
+
+        /* Marca d'água pequena abaixo das opções */
+        .watermark {
+            margin-top: 15px; /* Espaço logo abaixo do último botão */
+            font-size: 11px;  /* Tamanho pequeno */
+            color: #bbb;      /* Cinza claro */
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+
+        /* Feedback Visual */
+        .flash-correct { background-color: #2ecc71 !important; }
+        .flash-wrong { background-color: #e74c3c !important; }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-card">
+        <h1 id="question-text">Quem é o usuário da técnica "Infinito"?</h1>
+        
+        <div class="options-container">
+            <button class="btn-option" onclick="handleAnswer(true)">Satoru Gojo</button>
+            <button class="btn-option" onclick="handleAnswer(false)">Jogo</button>
+        </div>
+
+        <div class="watermark">@joao.v</div>
+    </div>
+
+    <script>
+        function handleAnswer(isCorrect) {
+            const body = document.body;
+
+            if (isCorrect) {
+                body.classList.add('flash-correct');
+                setTimeout(() => {
+                    body.classList.remove('flash-correct');
+                    alert("Exato! Você dominou os Seis Olhos.");
+                }, 150);
+            } else {
+                body.classList.add('flash-wrong');
+                setTimeout(() => {
+                    body.classList.remove('flash-wrong');
+                    alert("Errou! Satoru Gojo te mandou pro espaço.");
+                }, 150);
+            }
+        }
+    </script>
+
+</body>
+</html>
