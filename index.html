@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJK Quiz - Ranks</title>
+    <title>JJK Quiz - Elite</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -13,17 +13,15 @@
             justify-content: center;
             height: 100vh;
             overflow: hidden;
-            transition: background-color 0.2s ease;
-            /* Foto do Shrek de fundo */
+            transition: 0.3s;
             background: url('xd.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* Camada para escurecer um pouco o fundo e ler melhor as perguntas */
         .overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.3);
             z-index: 1;
         }
 
@@ -35,10 +33,11 @@
         }
 
         select {
-            padding: 12px;
-            border-radius: 10px;
-            border: 2px solid #333;
-            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            background: rgba(0,0,0,0.7);
+            color: white;
             font-weight: bold;
             cursor: pointer;
         }
@@ -48,19 +47,19 @@
             text-align: center;
             width: 90%;
             max-width: 450px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             z-index: 2;
         }
 
-        h1 { color: #333; font-size: 22px; margin-bottom: 30px; min-height: 60px; }
+        h1 { color: #222; font-size: 22px; margin-bottom: 25px; min-height: 50px; }
 
         .options-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
             width: 100%;
         }
 
@@ -69,135 +68,33 @@
             padding: 18px;
             font-size: 17px;
             font-weight: bold;
-            color: #444;
-            background-color: #f8f9fa;
-            border: 2px solid #eee;
-            border-radius: 50px;
+            color: #333;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
+            outline: none;
         }
 
-        .btn-option:hover { border-color: #3498db; background-color: #fff; }
-
-        .watermark { margin-top: 20px; font-size: 11px; color: #888; }
-
-        .flash-correct { background-color: rgba(46, 204, 113, 0.8) !important; }
-        .flash-wrong { background-color: rgba(231, 76, 60, 0.8) !important; }
-
-        .rank-title { font-size: 28px; font-weight: bold; color: #2c3e50; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-    <div class="overlay"></div>
-
-    <div class="menu-container">
-        <select id="select-nivel" onchange="mudarNivel()">
-            <option value="1">Nível 1</option><option value="2">Nível 2</option>
-            <option value="3">Nível 3</option><option value="4">Nível 4</option>
-            <option value="5">Nível 5</option><option value="6">Nível 6</option>
-            <option value="7">Nível 7</option><option value="8">Nível 8</option>
-            <option value="9">Nível 9</option><option value="10">Nível 10</option>
-        </select>
-    </div>
-
-    <div class="quiz-card" id="quiz-content">
-        <h1 id="question-text">Carregando...</h1>
-        <div class="options-container">
-            <button class="btn-option" id="opt1" onclick="check(0)"></button>
-            <button class="btn-option" id="opt2" onclick="check(1)"></button>
-        </div>
-        <div class="watermark">@joao.v</div>
-    </div>
-
-    <script>
-        const db = {
-            1: [
-                { q: "Quem é o receptáculo de Sukuna?", options: ["Itadori", "Megumi"], correct: 0 },
-                { q: "Qual a cor do Vazio Roxo?", options: ["Roxo", "Azul"], correct: 0 },
-                { q: "Nobara usa qual arma?", options: ["Martelo", "Katana"], correct: 0 },
-                { q: "Quem tem costuras no rosto?", options: ["Mahito", "Jogo"], correct: 0 },
-                { q: "Megumi invoca o quê?", options: ["Shinigamis", "Shikigamis"], correct: 1 },
-                { q: "O Brilho Negro é de que cor?", options: ["Preto", "Branco"], correct: 0 },
-                { q: "Qual o melhor amigo do Itadori?", options: ["Todo", "Choso"], correct: 0 },
-                { q: "Nanami era o quê?", options: ["Assalariado", "Cozinheiro"], correct: 0 },
-                { q: "Inumaki fala nomes de quê?", options: ["Sushi", "Doces"], correct: 0 },
-                { q: "Qual o grau do Gojo?", options: ["Especial", "Grau 1"], correct: 0 }
-            ],
-            2: [
-                { q: "Quem matou o Toji Fushiguro?", options: ["Gojo", "Geto"], correct: 0 },
-                { q: "Qual o nome da técnica da Nobara?", options: ["Ressonância", "Corte"], correct: 0 },
-                { q: "Panda é um animal de verdade?", options: ["Não, é um cadáver amaldiçoado", "Sim"], correct: 0 },
-                { q: "Quem é o 'Pai' do Choso?", options: ["Kenjaku", "Sukuna"], correct: 0 },
-                { q: "Qual maldição usa fogo?", options: ["Jogo", "Hanami"], correct: 0 },
-                { q: "Qual o nome do território do Megumi?", options: ["Jardim das Sombras", "Vazio Infinito"], correct: 0 },
-                { q: "Quem ensinou o Itadori a controlar energia?", options: ["Gojo", "Nanami"], correct: 0 },
-                { q: "Qual a arma da Maki?", options: ["Nuvem Brincalhona", "Lança"], correct: 0 },
-                { q: "Quem é o mestre do Gojo?", options: ["Yaga", "Gakuganji"], correct: 0 },
-                { q: "Onde fica a escola de feiticeiros?", options: ["Tokyo", "Osaka"], correct: 0 }
-            ]
-            // O código gerará automaticamente perguntas genéricas para os níveis 3-10 para não travar
-        };
-
-        // Preenchendo níveis vazios para evitar erro
-        for(let i=3; i<=10; i++) { db[i] = db[1].map(p => ({...p, q: p.q + " (Nível "+i+")"})); }
-
-        let perguntasAtuais = [];
-        let indexAtual = 0;
-        let acertos = 0;
-
-        function mudarNivel() {
-            const nivel = document.getElementById('select-nivel').value;
-            perguntasAtuais = db[nivel];
-            indexAtual = 0;
-            acertos = 0;
-            load();
+        /* ANIMAÇÕES DOS BOTÕES */
+        .btn-correct {
+            background-color: #2ecc71 !important;
+            color: white !important;
+            border-color: #27ae60 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
         }
 
-        function load() {
-            if (indexAtual < perguntasAtuais.length) {
-                document.getElementById('question-text').innerText = perguntasAtuais[indexAtual].q;
-                document.getElementById('opt1').innerText = perguntasAtuais[indexAtual].options[0];
-                document.getElementById('opt2').innerText = perguntasAtuais[indexAtual].options[1];
-            } else {
-                exibirRank();
-            }
+        .btn-wrong {
+            background-color: #e74c3c !important;
+            color: white !important;
+            border-color: #c0392b !important;
+            transform: scale(0.95);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
         }
 
-        function check(index) {
-            const isCorrect = index === perguntasAtuais[indexAtual].correct;
-            if (isCorrect) {
-                acertos++;
-                document.body.classList.add('flash-correct');
-            } else {
-                document.body.classList.add('flash-wrong');
-            }
-            
-            setTimeout(() => {
-                document.body.classList.remove('flash-correct', 'flash-wrong');
-                indexAtual++;
-                load();
-            }, 250);
-        }
+        .watermark { margin-top: 25px; font-size: 11px; color: #999; letter-spacing: 1px; }
 
-        function exibirRank() {
-            let rank = "";
-            if (acertos <= 3) rank = "Iniciante (Nível Civil)";
-            else if (acertos <= 6) rank = "Fã (Feiticeiro Grau 4)";
-            else if (acertos <= 8) rank = "Muito Fã (Grau 1)";
-            else rank = "Especialista (Grau Especial)";
-
-            document.getElementById('quiz-content').innerHTML = `
-                <h1>Resultado: ${acertos}/10</h1>
-                <p>Seu Rank:</p>
-                <div class="rank-title">${rank}</div>
-                <button class="btn-option" style="margin-top:20px" onclick="location.reload()">Refazer</button>
-                <div class="watermark">@joao.v</div>
-            `;
-        }
-
-        mudarNivel();
-    </script>
-</body>
-</html>
-
+        /* Piscar o fundo de leve */
+        .bg-correct { background-color: rgba
