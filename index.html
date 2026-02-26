@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJK Quiz Ultimate - 100 Perguntas</title>
+    <title>JJK Quiz Ultimate - Versão Final</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -13,7 +13,7 @@
             justify-content: center;
             height: 100vh;
             overflow: hidden;
-            background: url('xd.jpg') no-repeat center center fixed; 
+            background: url('fundo.jpg') no-repeat center center fixed; 
             background-size: cover;
         }
 
@@ -110,7 +110,7 @@
 
     <div class="menu-container">
         <select id="select-nivel" onchange="mudarNivel()">
-            <option value="1">Nível 1 (Fácil)</option>
+            <option value="1">Nível 1 (Iniciante)</option>
             <option value="2">Nível 2</option>
             <option value="3">Nível 3</option>
             <option value="4">Nível 4</option>
@@ -152,124 +152,124 @@
 
         const db = {
             1: [
-                { q: "Quem é o protagonista de Jujutsu Kaisen?", options: ["Itadori Yuji", "Gojo Satoru"], correct: "Itadori Yuji" },
-                { q: "Qual o apelido do Gojo?", options: ["O Mais Forte", "O Mais Rápido"], correct: "O Mais Forte" },
-                { q: "Quantos dedos o Sukuna tem no total?", options: ["20 dedos", "10 dedos"], correct: "20 dedos" },
-                { q: "Quem usa a técnica do Discurso Amaldiçoado?", options: ["Inumaki", "Panda"], correct: "Inumaki" },
-                { q: "Qual a cor dos cabelos da Nobara?", options: ["Ruivo", "Loiro"], correct: "Ruivo" },
-                { q: "Quem é o vilão que parece um humano costurado?", options: ["Mahito", "Hanami"], correct: "Mahito" },
-                { q: "Qual animal o Panda na verdade é?", options: ["Cadáver Amaldiçoado", "Panda real"], correct: "Cadáver Amaldiçoado" },
-                { q: "Megumi Fushiguro usa qual técnica?", options: ["Dez Sombras", "Infinito"], correct: "Dez Sombras" },
-                { q: "Quem é o melhor amigo do Itadori (Grau 1)?", options: ["Aoi Todo", "Fushiguro"], correct: "Aoi Todo" },
-                { q: "O que Itadori comeu para ganhar poderes?", options: ["Um Dedo", "Um Coração"], correct: "Um Dedo" }
+                { q: "Quem é o protagonista de Jujutsu Kaisen?", options: ["Itadori Yuji", "Megumi Fushiguro"], correct: "Itadori Yuji" },
+                { q: "Qual o apelido de Satoru Gojo?", options: ["O Mais Forte", "Rei das Maldições"], correct: "O Mais Forte" },
+                { q: "Quantos dedos Sukuna tem no total?", options: ["20", "10"], correct: "20" },
+                { q: "Qual a cor do cabelo da Nobara Kugisaki?", options: ["Ruivo", "Preto"], correct: "Ruivo" },
+                { q: "Quem usa o 'Discurso Amaldiçoado'?", options: ["Inumaki", "Panda"], correct: "Inumaki" },
+                { q: "Qual o objetivo de Itadori no início?", options: ["Comer todos os dedos", "Virar professor"], correct: "Comer todos os dedos" },
+                { q: "Quem é o diretor da escola de Tokyo?", options: ["Masamichi Yaga", "Gojo"], correct: "Masamichi Yaga" },
+                { q: "O Panda é na verdade o quê?", options: ["Cadáver Amaldiçoado", "Um animal"], correct: "Cadáver Amaldiçoado" },
+                { q: "Qual animal Megumi invoca primeiro?", options: ["Cães Divinos", "Pássaro Nue"], correct: "Cães Divinos" },
+                { q: "O que Itadori comeu no 1º episódio?", options: ["Um Dedo", "Um Olho"], correct: "Um Dedo" }
             ],
             2: [
-                { q: "Qual o nome do território do Gojo?", options: ["Vazio Infinito", "Santuário Malévolo"], correct: "Vazio Infinito" },
-                { q: "Quem matou o Toji Fushiguro?", options: ["Gojo Satoru", "Geto Suguru"], correct: "Gojo Satoru" },
-                { q: "Qual o Grau da Maki Zenin no início?", options: ["Grau 4", "Grau 1"], correct: "Grau 4" },
-                { q: "Qual o nome da técnica da Nobara?", options: ["Ressonância", "Corte das Sombras"], correct: "Ressonância" },
-                { q: "Quem é o pai do Megumi?", options: ["Toji", "Gojo"], correct: "Toji" },
-                { q: "Nanami Kento era um...", options: ["Assalariado", "Policial"], correct: "Assalariado" },
-                { q: "Qual a técnica do Aoi Todo?", options: ["Boogie Woogie", "Brilho Negro"], correct: "Boogie Woogie" },
-                { q: "Qual maldição usa ataques de plantas?", options: ["Hanami", "Jogo"], correct: "Hanami" },
-                { q: "Quem é a irmã da Maki?", options: ["Mai", "Nobara"], correct: "Mai" },
-                { q: "Onde fica a segunda escola de Jujutsu?", options: ["Kyoto", "Osaka"], correct: "Kyoto" }
+                { q: "Qual o nome da Expansão de Domínio do Gojo?", options: ["Vazio Infinito", "Santuário Malévolo"], correct: "Vazio Infinito" },
+                { q: "Quem matou Toji Fushiguro?", options: ["Gojo", "Geto"], correct: "Gojo" },
+                { q: "A técnica 'Boogie Woogie' é de quem?", options: ["Aoi Todo", "Nanami"], correct: "Aoi Todo" },
+                { q: "Qual o grau de Nanami Kento?", options: ["Grau 1", "Especial"], correct: "Grau 1" },
+                { q: "Qual a arma principal da Maki Zenin?", options: ["Armas Amaldiçoadas", "Poder Mental"], correct: "Armas Amaldiçoadas" },
+                { q: "O que Nanami era antes de ser feiticeiro?", options: ["Assalariado", "Chef"], correct: "Assalariado" },
+                { q: "Qual o nome da maldição com cara de remendos?", options: ["Mahito", "Jogo"], correct: "Mahito" },
+                { q: "Qual a técnica de Nobara?", options: ["Ressonância", "Corte"], correct: "Ressonância" },
+                { q: "Onde fica a escola rival de Tokyo?", options: ["Kyoto", "Osaka"], correct: "Kyoto" },
+                { q: "Quem é o pai do Megumi?", options: ["Toji", "Gojo"], correct: "Toji" }
             ],
             3: [
-                { q: "Qual o nome da Expansão do Sukuna?", options: ["Santuário Malévolo", "Palácio de Ossos"], correct: "Santuário Malévolo" },
-                { q: "Quem possui a técnica de manipulação de sangue?", options: ["Noritoshi Kamo", "Megumi"], correct: "Noritoshi Kamo" },
-                { q: "Qual o nome da maldição que é o Rei das Maldições?", options: ["Sukuna", "Mahito"], correct: "Sukuna" },
-                { q: "Quem ensinou o Brilho Negro ao Itadori?", options: ["Aoi Todo", "Nanami"], correct: "Aoi Todo" },
-                { q: "Qual a restrição celestial da Maki?", options: ["Sem energia amaldiçoada", "Sem visão"], correct: "Sem energia amaldiçoada" },
-                { q: "Quem é o receptáculo do Kenjaku (Shibuya)?", options: ["Geto Suguru", "Gojo"], correct: "Geto Suguru" },
-                { q: "Qual o nome da técnica do Nanami?", options: ["Relação 7:3", "Corte Preciso"], correct: "Relação 7:3" },
-                { q: "Quem é a Rainha das Maldições?", options: ["Rika Orimoto", "Uraume"], correct: "Rika Orimoto" },
-                { q: "Qual o nome do Shikigami mais forte do Megumi?", options: ["Mahoraga", "Totó"], correct: "Mahoraga" },
-                { q: "Como o Inumaki silencia os outros?", options: ["'Durma'", "'Pare'"], correct: "'Pare'" }
+                { q: "Qual o nome da Expansão de Domínio do Sukuna?", options: ["Santuário Malévolo", "Palácio Sombrio"], correct: "Santuário Malévolo" },
+                { q: "Quem ensinou o Brilho Negro ao Itadori?", options: ["Aoi Todo", "Gojo"], correct: "Aoi Todo" },
+                { q: "Qual a técnica do clã Kamo?", options: ["Manipulação de Sangue", "Sombras"], correct: "Manipulação de Sangue" },
+                { q: "Quem é a 'Rainha das Maldições'?", options: ["Rika Orimoto", "Uraume"], correct: "Rika Orimoto" },
+                { q: "Qual o nome do Shikigami pássaro do Megumi?", options: ["Nue", "Orochi"], correct: "Nue" },
+                { q: "Quem possui o território 'Auto-Encarnação da Perfeição'?", options: ["Mahito", "Hanami"], correct: "Mahito" },
+                { q: "A técnica 7:3 pertence a quem?", options: ["Nanami", "Inumaki"], correct: "Nanami" },
+                { q: "Qual a restrição celestial da Maki?", options: ["Sem Energia Amaldiçoada", "Sem Visão"], correct: "Sem Energia Amaldiçoada" },
+                { q: "Quem é o protagonista do filme JJK 0?", options: ["Yuta Okkotsu", "Itadori"], correct: "Yuta Okkotsu" },
+                { q: "Qual maldição usa ataques de plantas e flores?", options: ["Hanami", "Dagon"], correct: "Hanami" }
             ],
             4: [
-                { q: "Qual o nome do protagonista de JJK 0?", options: ["Yuta Okkotsu", "Itadori"], correct: "Yuta Okkotsu" },
-                { q: "Quem é o diretor da escola de Tokyo?", options: ["Masamichi Yaga", "Gojo"], correct: "Masamichi Yaga" },
-                { q: "Qual o nome da técnica de Yuta?", options: ["Cópia", "Infinito"], correct: "Cópia" },
-                { q: "Quem é o mestre de armas da Maki?", options: ["Ela mesma", "Gojo"], correct: "Ela mesma" },
-                { q: "Qual a cor da energia do Brilho Negro?", options: ["Preto/Roxo", "Azul"], correct: "Preto/Roxo" },
-                { q: "Quantos anos Nanami tinha quando morreu?", options: ["28 anos", "32 anos"], correct: "28 anos" },
-                { q: "Quem criou os Fetos Amaldiçoados?", options: ["Kenjaku", "Sukuna"], correct: "Kenjaku" },
-                { q: "Qual o nome do irmão mais velho de Choso?", options: ["Ele é o mais velho", "Eso"], correct: "Ele é o mais velho" },
-                { q: "A técnica 'Corte e Desmanchar' é de quem?", options: ["Sukuna", "Mahito"], correct: "Sukuna" },
-                { q: "Qual o nome da barreira em Shibuya?", options: ["Cortina", "Vingança"], correct: "Cortina" }
+                { q: "Qual o nome do território do Jogo?", options: ["Caixão da Montanha de Ferro", "Mar de Fogo"], correct: "Caixão da Montanha de Ferro" },
+                { q: "Quem absorveu Mahito no final de Shibuya?", options: ["Kenjaku", "Sukuna"], correct: "Kenjaku" },
+                { q: "Qual a cor da energia do Black Flash?", options: ["Preto/Roxo", "Azul"], correct: "Preto/Roxo" },
+                { q: "Quem é o irmão 'best friend' de Todo?", options: ["Itadori", "Fushiguro"], correct: "Itadori" },
+                { q: "Qual a técnica de Yuta Okkotsu?", options: ["Cópia", "Infinito"], correct: "Cópia" },
+                { q: "Quem selou o Gojo em Shibuya?", options: ["Kenjaku (no corpo de Geto)", "Mahito"], correct: "Kenjaku (no corpo de Geto)" },
+                { q: "Quantos núcleos o Panda tem?", options: ["3", "1"], correct: "3" },
+                { q: "Qual o nome da técnica de reversão (cura)?", options: ["Técnica Amaldiçoada Reversa", "Cura Total"], correct: "Técnica Amaldiçoada Reversa" },
+                { q: "Quem é a irmã de Maki?", options: ["Mai", "Utahime"], correct: "Mai" },
+                { q: "Qual o nome do Shikigami elefante do Megumi?", options: ["Max Elephant", "Bansho"], correct: "Max Elephant" }
             ],
             5: [
-                { q: "Quem matou Mahito no final?", options: ["Kenjaku (absorveu)", "Itadori"], correct: "Kenjaku (absorveu)" },
-                { q: "Qual a comida favorita do Itadori?", options: ["Albôndegas", "Ramen"], correct: "Albôndegas" },
-                { q: "Quem possui o território 'Auto-Encarnação da Perfeição'?", options: ["Mahito", "Sukuna"], correct: "Mahito" },
-                { q: "Qual o clã do Gojo Satoru?", options: ["Clã Gojo", "Clã Zenin"], correct: "Clã Gojo" },
-                { q: "Qual o nome do Shikigami pássaro do Megumi?", options: ["Nue", "Orochi"], correct: "Nue" },
-                { q: "Quem é a maldição das florestas?", options: ["Hanami", "Dagon"], correct: "Hanami" },
-                { q: "Quantos graus existem para feiticeiros?", options: ["5 (4 ao Especial)", "3"], correct: "5 (4 ao Especial)" },
-                { q: "Qual o nome do arco que Gojo é selado?", options: ["Incidente de Shibuya", "Culling Game"], correct: "Incidente de Shibuya" },
-                { q: "O que Geto odeia?", options: ["Não-feiticeiros (macacos)", "Maldições"], correct: "Não-feiticeiros (macacos)" },
-                { q: "Quem é a assistente do Gojo?", options: ["Ijichi", "Shoko"], correct: "Ijichi" }
+                { q: "Qual o clã do Satoru Gojo?", options: ["Clã Gojo", "Clã Zenin"], correct: "Clã Gojo" },
+                { q: "Quem é o mestre de armas da Maki?", options: ["Ela mesma", "Gojo"], correct: "Ela mesma" },
+                { q: "A técnica 'Corte e Desmanchar' é de quem?", options: ["Sukuna", "Mahito"], correct: "Sukuna" },
+                { q: "Qual o nome do arco onde o Gojo é selado?", options: ["Incidente de Shibuya", "Culling Game"], correct: "Incidente de Shibuya" },
+                { q: "Quem é a doutora da escola de Jujutsu?", options: ["Shoko Ieiri", "Mei Mei"], correct: "Shoko Ieiri" },
+                { q: "O que Geto odeia profundamente?", options: ["Não-feiticeiros (macacos)", "Maldições"], correct: "Não-feiticeiros (macacos)" },
+                { q: "Qual a técnica da Mei Mei?", options: ["Manipulação de Pássaros", "Dinheiro"], correct: "Manipulação de Pássaros" },
+                { q: "Qual o passatempo favorito de Itadori?", options: ["Ver filmes", "Lutar"], correct: "Ver filmes" },
+                { q: "Quem derrotou Hanami em Shibuya?", options: ["Gojo", "Todo"], correct: "Gojo" },
+                { q: "Qual o nome do assistente do Gojo?", options: ["Ijichi", "Yaga"], correct: "Ijichi" }
             ],
             6: [
-                { q: "Qual o nome da técnica de reversão do Gojo?", options: ["Vermelho", "Azul"], correct: "Vermelho" },
-                { q: "O 'Azul' é baseado em que conceito?", options: ["Atração", "Repulsão"], correct: "Atração" },
-                { q: "Qual o nome da doutora da escola?", options: ["Shoko Ieiri", "Utahime"], correct: "Shoko Ieiri" },
-                { q: "Quem usa a técnica da Projeção?", options: ["Naobito Zenin", "Toji"], correct: "Naobito Zenin" },
-                { q: "Qual o nome do território do Jogo?", options: ["Caixão da Montanha de Ferro", "Mar de Fogo"], correct: "Caixão da Montanha de Ferro" },
-                { q: "Quem é o mestre do Megumi no passado?", options: ["Gojo", "Toji"], correct: "Gojo" },
-                { q: "Qual o nome da espada da Nobara?", options: ["Ela não usa espada", "Pregos amaldiçoados"], correct: "Ela não usa espada" },
-                { q: "O Panda tem quantos núcleos?", options: ["3", "2"], correct: "3" },
-                { q: "Quem é o receptáculo da Rika?", options: ["Ninguém (ela é a maldição)", "Yuta"], correct: "Ninguém (ela é a maldição)" },
-                { q: "Qual o passatempo do Itadori?", options: ["Ver filmes", "Lutar"], correct: "Ver filmes" }
+                { q: "Qual o nome da técnica 'Vermelho' do Gojo?", options: ["Reversão: Vermelho", "Atração: Azul"], correct: "Reversão: Vermelho" },
+                { q: "Qual o efeito do 'Vazio Roxo'?", options: ["Matéria Imaginária", "Explosão de Fogo"], correct: "Matéria Imaginária" },
+                { q: "Quem é o personagem mais rápido (sem Gojo)?", options: ["Naobito Zenin", "Toji"], correct: "Naobito Zenin" },
+                { q: "Dagon é uma maldição baseada em quê?", options: ["Oceano", "Vulcão"], correct: "Oceano" },
+                { q: "Quem usou o corpo de Toji em Shibuya?", options: ["Um neto de uma velha", "Megumi"], correct: "Um neto de uma velha" },
+                { q: "Qual o nome do território do Dagon?", options: ["Horizonte da Hipnotizante Gastronomia", "Mar Aberto"], correct: "Horizonte da Hipnotizante Gastronomia" },
+                { q: "Qual a técnica de Utahime?", options: ["Solo Solo Kinpika", "Dança das Sombras"], correct: "Solo Solo Kinpika" },
+                { q: "Quem criou os 'Fetos Amaldiçoados'?", options: ["Kenjaku", "Sukuna"], correct: "Kenjaku" },
+                { q: "Qual o nome da técnica do clã Zenin?", options: ["Projeção 24fps", "Sombras"], correct: "Projeção 24fps" },
+                { q: "Quem é o mestre do Inumaki?", options: ["Gojo", "Yaga"], correct: "Gojo" }
             ],
             7: [
-                { q: "O que significa 'Black Flash'?", options: ["Kokuo", "Kokusen"], correct: "Kokusen" },
-                { q: "Quem é a mulher que Todo gosta?", options: ["Takada-chan", "Maki"], correct: "Takada-chan" },
-                { q: "Qual o nome da técnica de Utahime?", options: ["Solo Solo Kinpika", "Dança das Flores"], correct: "Solo Solo Kinpika" },
-                { q: "Quem matou Hanami?", options: ["Gojo", "Itadori"], correct: "Gojo" },
-                { q: "Dagon é uma maldição de qual elemento?", options: ["Oceano", "Terra"], correct: "Oceano" },
-                { q: "Quem usou a técnica do '0.2 segundos' em Shibuya?", options: ["Gojo e Mahito", "Sukuna"], correct: "Gojo e Mahito" },
-                { q: "Qual o nome da técnica do clã Kamo?", options: ["Manipulação de Sangue", "Sombras"], correct: "Manipulação de Sangue" },
-                { q: "Quem derrotou o Toji na primeira vez?", options: ["Gojo", "Geto"], correct: "Gojo" },
-                { q: "Qual a idade do Gojo?", options: ["28 anos", "25 anos"], correct: "28 anos" },
-                { q: "Onde o selo de Sukuna ficava guardado?", options: ["Numa caixa em uma escola", "No templo"], correct: "Numa caixa em uma escola" }
-            ],
-            8: [
-                { q: "Qual o nome do criador de JJK?", options: ["Gege Akutami", "Tite Kubo"], correct: "Gege Akutami" },
-                { q: "Quem é o personagem que Gege mais odeia?", options: ["Gojo Satoru", "Itadori"], correct: "Gojo Satoru" },
-                { q: "Qual a expansão do Dagon?", options: ["Horizonte da Hipnotizante Gastronomia", "Jardim das Sombras"], correct: "Horizonte da Hipnotizante Gastronomia" },
-                { q: "Quem usou o corpo do Toji em Shibuya?", options: ["Um neto de uma velha", "Megumi"], correct: "Um neto de uma velha" },
-                { q: "Qual o nome do ritual do Mahoraga?", options: ["Espada de Oito Cabos", "Ritual do Medo"], correct: "Espada de Oito Cabos" },
                 { q: "Quem é o 'Deus' do mundo Jujutsu?", options: ["Mestre Tengen", "Sukuna"], correct: "Mestre Tengen" },
                 { q: "Onde Tengen vive?", options: ["Túmulo da Estrela", "Céu"], correct: "Túmulo da Estrela" },
-                { q: "Qual o nome da técnica de Hakari?", options: ["Jogo de Azar (Jackpot)", "Luta de Rua"], correct: "Jogo de Azar (Jackpot)" },
-                { q: "Quem é o receptáculo de anjo?", options: ["Hana Kurusu", "Nobara"], correct: "Hana Kurusu" },
-                { q: "Qual o nome real do Kenjaku no passado?", options: ["Ele é uma alma milenar", "Noritoshi Kamo"], correct: "Ele é uma alma milenar" }
+                { q: "Qual o nome do ritual do Mahoraga?", options: ["Espada de Oito Cabos", "Ritual do Medo"], correct: "Espada de Oito Cabos" },
+                { q: "Quantos anos Gojo tem?", options: ["28", "30"], correct: "28" },
+                { q: "Qual o nome real do Sukuna humano?", options: ["Ryomen Sukuna", "Ele era um demônio"], correct: "Ryomen Sukuna" },
+                { q: "O que significa 'Ryomen'?", options: ["Duas Faces", "Quatro Braços"], correct: "Duas Faces" },
+                { q: "Qual a técnica de Hakari?", options: ["Jogo de Azar (Jackpot)", "Luta de Rua"], correct: "Jogo de Azar (Jackpot)" },
+                { q: "Quem é o receptáculo de Anjo?", options: ["Hana Kurusu", "Nobara"], correct: "Hana Kurusu" },
+                { q: "Qual a altura do Gojo?", options: ["1,90m", "1,85m"], correct: "1,90m" },
+                { q: "Quem é o verdadeiro pai do Itadori?", options: ["Jin Itadori", "Kenjaku"], correct: "Jin Itadori" }
+            ],
+            8: [
+                { q: "Qual o nome do capítulo que Gojo morre?", options: ["236", "235"], correct: "236" },
+                { q: "Qual a técnica do Kusakabe?", options: ["Estilo New Shadow", "Corte"], correct: "Estilo New Shadow" },
+                { q: "Quem é a mãe do Itadori (Kenjaku)?", options: ["Kaori Itadori", "Shoko"], correct: "Kaori Itadori" },
+                { q: "Qual o nome do Shikigami que cura?", options: ["Cervo Redondo", "Nue"], correct: "Cervo Redondo" },
+                { q: "Quantos Shikigamis Megumi já mostrou?", options: ["9", "10"], correct: "9" },
+                { q: "Quem criou a técnica New Shadow?", options: ["Sadatsuna Ashiya", "Tengen"], correct: "Sadatsuna Ashiya" },
+                { q: "Quem é o personagem que o autor Gege odeia?", options: ["Gojo", "Itadori"], correct: "Gojo" },
+                { q: "Qual o nome do jogo mortal de Kenjaku?", options: ["Jogo do Abate", "Shibuya"], correct: "Jogo do Abate" },
+                { q: "Quem matou a Rika quando ela era criança?", options: ["Um carro", "Geto"], correct: "Um carro" },
+                { q: "Qual o nome da técnica de Sukuna de fogo?", options: ["Fuga (Open)", "Chama Viva"], correct: "Fuga (Open)" }
             ],
             9: [
-                { q: "Quantos Shikigamis o Megumi já mostrou?", options: ["9", "10"], correct: "9" },
-                { q: "Qual a técnica da Mei Mei?", options: ["Manipulação de Pássaros", "Dinheiro"], correct: "Manipulação de Pássaros" },
-                { q: "Quem é o pai biológico do Itadori?", options: ["Jin Itadori", "Kenjaku"], correct: "Jin Itadori" },
-                { q: "Quem é a mãe do Itadori (Kenjaku)?", options: ["Kaori Itadori", "Shoko"], correct: "Kaori Itadori" },
-                { q: "Qual o nome da expansão da Maki?", options: ["Ela não tem", "Espelho de Sangue"], correct: "Ela não tem" },
-                { q: "Qual o nome da técnica do Kusakabe?", options: ["Estilo New Shadow", "Corte"], correct: "Estilo New Shadow" },
-                { q: "Quem é o personagem mais rápido (sem Gojo)?", options: ["Toji/Maki", "Naobito"], correct: "Naobito" },
-                { q: "Qual o nome do jogo mortal de Kenjaku?", options: ["Jogo do Abate", "Shibuya"], correct: "Jogo do Abate" },
-                { q: "Quem matou a Rika?", options: ["Um carro", "Uma maldição"], correct: "Um carro" },
-                { q: "Qual o nome da técnica do Sukuna de fogo?", options: ["Fuga (Open)", "Chama Viva"], correct: "Fuga (Open)" }
+                { q: "Qual o nome do território do Hakari?", options: ["Idle Death Gamble", "Vazio"], correct: "Idle Death Gamble" },
+                { q: "Quem será o próximo chefe do clã Zenin?", options: ["Megumi", "Maki"], correct: "Megumi" },
+                { q: "Qual o nome do Shikigami touro do Megumi?", options: ["Piercing Bull", "Orochi"], correct: "Piercing Bull" },
+                { q: "Quem usou o '0.2 segundos' em Shibuya?", options: ["Gojo e Mahito", "Sukuna"], correct: "Gojo e Mahito" },
+                { q: "Qual a expansão da Maki?", options: ["Ela não tem", "Espelho"], correct: "Ela não tem" },
+                { q: "Quantos braços Sukuna tem na forma original?", options: ["4", "2"], correct: "4" },
+                { q: "Qual a técnica do Choso?", options: ["Manipulação de Sangue", "Remendos"], correct: "Manipulação de Sangue" },
+                { q: "Quem derrotou o Toji na segunda vez?", options: ["Ninguém (ele se matou)", "Gojo"], correct: "Ninguém (ele se matou)" },
+                { q: "Qual o nome da técnica de voo da Hana?", options: ["Escada de Jacob", "Voo"], correct: "Escada de Jacob" },
+                { q: "Qual o nome do Shikigami sapo do Megumi?", options: ["Gama", "Totó"], correct: "Gama" }
             ],
             10: [
-                { q: "Qual a altura do Gojo?", options: ["1,90m", "1,85m"], correct: "1,90m" },
+                { q: "Quem Gege Akutami disse ser o personagem mais inteligente?", options: ["Kenjaku", "Gojo"], correct: "Kenjaku" },
+                { q: "Qual o nome da técnica de Yorozu?", options: ["Construção", "Sombras"], correct: "Construção" },
+                { q: "Qual a condição para o Jackpot do Hakari?", options: ["Acertar o 777", "Ganhar a luta"], correct: "Acertar o 777" },
+                { q: "Quem é o ancestral do clã Gojo?", options: ["Michizane Sugawara", "Tengen"], correct: "Michizane Sugawara" },
+                { q: "Qual a técnica do Takaba?", options: ["Comédia (Comedian)", "Tristeza"], correct: "Comédia (Comedian)" },
+                { q: "Quantos segundos dura o Jackpot do Hakari?", options: ["251 segundos", "240 segundos"], correct: "251 segundos" },
+                { q: "Qual o nome do Shikigami coelho do Megumi?", options: ["Escape Rabbits", "Nue"], correct: "Escape Rabbits" },
                 { q: "Quem é o único que Gojo chamou de 'O Mais Forte'?", options: ["Toji (pelo medo)", "Sukuna"], correct: "Toji (pelo medo)" },
-                { q: "Qual o nome do capítulo que Gojo morre?", options: ["236", "235"], correct: "236" },
-                { q: "Qual o verdadeiro nome do Sukuna humano?", options: ["Ryomen Sukuna", "Ele era um monstro"], correct: "Ryomen Sukuna" },
-                { q: "O que significa 'Ryomen'?", options: ["Duas faces", "Quatro braços"], correct: "Duas faces" },
-                { q: "Qual o nome do Shikigami que cura?", options: ["Cervo Redondo", "Nue"], correct: "Cervo Redondo" },
-                { q: "Quem é o criador da técnica New Shadow?", options: ["Sadatsuna Ashiya", "Tengen"], correct: "Sadatsuna Ashiya" },
-                { q: "Qual o nome do território do Hakari?", options: ["Idle Death Gamble", "Vazio"], correct: "Idle Death Gamble" },
-                { q: "Quantas pessoas Gojo matou em Shibuya?", options: ["Centenas de humanos transfigurados", "Milhares"], correct: "Centenas de humanos transfigurados" },
-                { q: "Quem será o próximo chefe do clã Zenin?", options: ["Megumi", "Maki"], correct: "Megumi" }
+                { q: "Onde Sukuna viveu como humano?", options: ["Era Heian", "Era Edo"], correct: "Era Heian" },
+                { q: "Qual o nome final da técnica do Itadori?", options: ["Santuário (Shrine)", "Soco Divergente"], correct: "Santuário (Shrine)" }
             ]
         };
 
@@ -295,7 +295,6 @@
                 const p = perguntasAtuais[indexAtual];
                 document.getElementById('question-text').innerText = p.q;
 
-                // EMBARALHAR RESPOSTAS
                 const shuffledOptions = [...p.options].sort(() => Math.random() - 0.5);
 
                 shuffledOptions.forEach(opt => {
@@ -336,19 +335,11 @@
         }
 
         function exibirRank() {
-            let rank = "";
-            if (acertos >= 9) rank = "GRAU ESPECIAL 👁️";
-            else if (acertos >= 7) rank = "FEITICEIRO GRAU 1 🔥";
-            else if (acertos >= 5) rank = "FEITICEIRO GRAU 2 🔨";
-            else rank = "NÍVEL CIVIL (FOCO!) 🤡";
-
+            let rank = acertos >= 9 ? "GRAU ESPECIAL 👁️" : acertos >= 7 ? "GRAU 1 🔥" : acertos >= 5 ? "GRAU 2 🔨" : "CIVIL 🤡";
             document.getElementById('quiz-content').innerHTML = `
-                <h1 style="font-size:26px">Fim do Nível!</h1>
-                <p style="font-size:18px">Acertos: <b>${acertos}/10</b></p>
-                <div style="background:#f4f4f4; padding:15px; border-radius:15px; margin:20px 0">
-                    <p style="margin:0; color:#666">Seu Rank:</p>
-                    <div style="font-size:22px; font-weight:bold; color:#2c3e50">${rank}</div>
-                </div>
+                <h1>Fim do Nível!</h1>
+                <p>Acertos: ${acertos}/10</p>
+                <div style="font-size:24px; font-weight:bold; margin:15px 0">${rank}</div>
                 <button class="btn-option" style="background:#222; color:white" onclick="location.reload()">Reiniciar</button>
                 <div class="watermark">@joao.v</div>
             `;
